@@ -1,0 +1,26 @@
+2024.04.23
+
+--db생성
+create database springtest;
+--유저생성
+create user 'springUser'@'localhost' identified by 'mysql';
+--권한부여
+grant all privileges on springtest.* to 'springUser'@'localhost';
+
+--권한설정 메모리반영
+flush privileges;
+
+create table board(
+bno int auto_increment,
+title varchar(200),
+writer varchar(200),
+content text,
+isDel varchar(10) default 'N',
+reg_date datetime default now(),
+read_count int,
+primary key(bno));
+
+alter table board modify read_count int default 0;
+값이 있다면 0으로 변경
+Update board set read_count = 0;
+

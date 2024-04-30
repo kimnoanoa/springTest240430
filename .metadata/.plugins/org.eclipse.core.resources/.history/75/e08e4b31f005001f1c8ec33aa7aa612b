@@ -1,0 +1,76 @@
+package com.ezen.test.service;
+
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.ezen.test.domain.BoardDTO;
+import com.ezen.test.domain.BoardVO;
+import com.ezen.test.domain.PagingVO;
+import com.ezen.test.repository.BoardDAO;
+import com.ezen.test.repository.FileDAO;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RequiredArgsConstructor
+@Service
+public class BoardServiceImpl implements BoardService{
+
+   private final BoardDAO bdao;
+   private final FileDAO fdao;
+
+   @Override
+   public int insert(BoardDTO bdto) {
+      log.info(">>>board register service check");
+      int isOk = bdao.insert(bdto.getBvo());
+      
+      //file 처리 => bno는 아직 없음.
+      if(bdto.getFlist()==null) {
+         return isOk;
+      }else {
+         //파일이 있다는 뜻  파일저장
+         if(isOk >0 && bdto.getFlist().size()>0) {
+            //bno는 아직 없음.  
+            //insert를 통해 자동생성 => db에가서 검색해오기
+            int bno = bdao.selectBno();
+         }
+      }
+      
+      return 
+   }
+
+   @Override
+   public List<BoardVO> getList(PagingVO pgvo) {
+      log.info(">>>board list service check");
+      return bdao.getList(pgvo);
+   }
+
+   @Override
+   public BoardVO getDetail(int bno) {
+      log.info(">>>board detail service check");
+      //read_count증가
+      bdao.updateRead_count(bno);
+      return bdao.getDetail(bno);
+   }
+
+   @Override
+   public void update(BoardVO bvo) {
+      log.info(">>>board update service check");
+      bdao.update(bvo);
+   }
+
+   @Override
+   public void remove(int bno) {
+      bdao.remove(bno);
+   }
+
+   @Override
+   public int getTotal(PagingVO pgvo) {
+      log.info(">>>board getTotal service check");
+      return bdao.getTotal(pgvo);
+   }
+   
+}

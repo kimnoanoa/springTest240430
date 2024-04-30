@@ -1,0 +1,12 @@
+package com.ezen.test;
+
+import lombok.Getter;
+
+@Getter
+public class test {
+	private String a;
+	private String b;
+	private String c;
+	
+
+}

@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Board register page</h1>
+	<div class="container-md">
+		<form action="/board/insert" method="post">
+			<div class="mb-3">
+			  <label for="t" class="form-label">title</label>
+			  <input type="text" class="form-control" id="formGroupExampleInput" name ="title" placeholder="Example input placeholder">
+			</div>
+			<div class="mb-3">
+			  <label for="w" class="form-label">writer</label>
+			  <input type="text" class="form-control" id="formGroupExampleInput" name="writer" placeholder="Example input placeholder">
+			</div>
+			<div class="mb-3">
+			  <span class="input-group-text">content</span>
+			  <textarea class="form-control" aria-label="With textarea" name="content"></textarea>
+			</div>
+			<button type="button" class="btn btn-secondary">등록</button>
+		</form>
+	</div>
+</body>
+</html>

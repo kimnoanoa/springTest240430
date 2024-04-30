@@ -1,0 +1,25 @@
+package com.ezen.test.service;
+
+
+
+import org.springframework.stereotype.Service;
+
+import com.ezen.test.domain.BoardVO;
+import com.ezen.test.repository.BoardDAO;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+@RequiredArgsConstructor
+public class BoardServiceImpl implements BoardService{
+	private final BoardDAO bdao;
+
+	@Override
+	public int insert(BoardVO bvo) {
+		log.info(">>>> Board register service check!");
+		return bdao.insert(bvo);
+	}
+
+}

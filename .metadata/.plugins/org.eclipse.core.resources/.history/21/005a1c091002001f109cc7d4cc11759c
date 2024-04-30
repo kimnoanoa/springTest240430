@@ -1,0 +1,9 @@
+package com.ezen.test;
+
+import org.springframework.test.context.ContextConfiguration;
+
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+public class BoardTest {
+	
+
+}

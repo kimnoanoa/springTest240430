@@ -1,0 +1,8 @@
+package com.ezen.test.domain;
+
+public class BoardDTO {
+	
+	private BoardVO bvo;
+	private List<FileVO> flist;
+
+}
