@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <jsp:include page="../layout/header.jsp" /> --%>
+ <jsp:include page="../layout/header.jsp" /> 
 
 <div class="container-md">
    <h1>Board Detail Page</h1>
@@ -70,11 +70,12 @@
    </div>
    <br>
    <hr>
+     --%>
    <!-- Comment line -->
 
    <!-- 댓글 등록 라인 -->
    <div class="input-group mb-3">
-      <span class="input-group-text" id="cmtWriter">${ses.id }</span> <input
+      <span class="input-group-text" id="cmtWriter">tester</span> <input
          type="text" id="cmtText" class="form-control"
          placeholder="댓글을 입력하세요." aria-label="Username"
          aria-describedby="basic-addon1">
@@ -83,8 +84,41 @@
    </div>
 
    <!-- 댓글 출력 라인 -->
+		<ul class="list-group list-group-flush" id="cmtListArea">
+		  <li class="list-group-item">
+		  <div class="input-group mb-3">
+		  <div class="fw-bold">Writer</div>
+		  content
+		  </div>
+		  <span class="badge rounded-pill text-bg-info">regdate</span>
+		  </li>
+		</ul>
+		
+		<!-- 댓글 더보기 버 -->
+		<div>
+			<button type="button" id="moreBtn" data-page="1" class="btn btn-outline-success" style="visibility : hidden">MORE +</button>
+		</div>
 
-   <div class="accordion" id="accordionExample">
+<!-- 모달  -->
+<div class="modal" id ="myModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Writer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <input type="text" id="cmtTextMod" class="form-control">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="cmtModBtn">modify</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+   <!-- <div class="accordion" id="accordionExample">
       <div class="accordion-item">
          <h2 class="accordion-header">
             <button class="accordion-button" type="button"
@@ -99,16 +133,16 @@
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
 
    <br>
    <hr>
- --%>
+
    <%-- <c:if test="${bvo.writer eq ses.id }"> --%>
       <a href="/board/modify?bno=${bvo.bno }"><button type="button"
             class="btn btn-warning">수정</button></a>
       <a href="/board/remove?bno=${bvo.bno }"><button type="button"
-            class="btn btn-danger">삭제</button></a>
+            class="btn btn-danger" id="cmtDelBtn">삭제</button></a>
    <%-- </c:if> --%>
 
    <a href="/board/list"><button type="button" class="btn btn-primary">list</button></a>
@@ -120,18 +154,18 @@
    <br>
 
 </div>
-<%-- <jsp:include page="../layout/footer.jsp" /> --%>
+ <jsp:include page="../layout/footer.jsp" /> 
 
-<!-- <script type="text/javascript">
+ <script type="text/javascript">
    const bnoVal = `<c:out value="${bvo.bno}"/>`;
-   const logVal = `<c:out value="${ses.id}"/>`;
+   /* const logVal = `<c:out value="${ses.id}"/>`; */
 </script>
-<script type="text/javascript" src="/resources/js/boardDetailComment.js"></script>
+<script type="text/javascript" src="/re/js/boardDetailComment.js"></script>
 
 <script type="text/javascript">
-   spreadCommentList(bnoVal);
+   spreadCommentList(bnoVal); 
 </script>
- -->
+ 
 
 
 

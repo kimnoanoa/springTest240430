@@ -8,7 +8,11 @@
   	values(#{title},#{writer},#{content})
   </insert>
  <select id="getList" resultType="com.ezen.www.domain.BoardVO">
- select * from board where isDel ="N" order by bno
+ select * from board 
+ where isDel ="N" 
+ <include refid="search"></include>
+ order by bno desc 
+ limit #{pageStart},#{qty}
  </select>
  <select id="getDetail" resultType="com.ezen.www.domain.BoardVO">
  select *from board where bno =#{bno}
@@ -22,4 +26,35 @@
  <update id="delete">
  update board set isDel ="Y" where bno =#{bno}
  </update>
+ <select id="getTotal" resultType="int">
+ select count(bno) from board where isDel = "N" <include refid="search"></include>
+ </select>
+ <select id="selectOneBno" resultType="int">
+ 	select max(bno) from board where isDel ="N";
+ </select>
+ <!-- 검색라인 -->
+<sql id="search">
+	<if test="type!=null">
+		<trim prefix="and (" suffix=")" suffixOverrides="or">
+			<foreach collection="typeToArray" item="type">
+				<trim suffix="or" > 
+					<choose>
+						<when test="type == 't'.toString()">
+							title like concat ('%',#{keyword},'%')
+						</when>
+						<when test="type == 'w'.toString()">
+							writer like concat ('%',#{keyword},'%')
+						</when>
+						<when test="type == 'c'.toString()">
+							content like concat ('%',#{keyword},'%')
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</if>
+</sql>
+ 
+ 
+ 
  </mapper>

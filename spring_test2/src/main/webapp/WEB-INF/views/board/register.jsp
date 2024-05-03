@@ -2,11 +2,11 @@
    pageEncoding="UTF-8"%>
 
 
-<%-- <jsp:include page="../layout/header.jsp"></jsp:include> --%>
+ <jsp:include page="../layout/header.jsp"></jsp:include> 
 <div class="container-md">
    <h1>Board Register Page</h1>
 
-   <form action="/board/insert" method="post"
+   <form action="/board/insert" method="post" enctype="multipart/form-data"
       >
       <div class="mb-3">
          <label for="formGroupExampleInput" class="form-label">Title</label> <input
@@ -25,27 +25,27 @@
             aria-label="With textarea"></textarea>
       </div>
       <!--  파일 입력 라인 추가 -->
-      <!-- <div class="mb-3">
+      <div class="mb-3">
          <label for="file" class="form-label">files...</label>
          <input type="file" class="form-control" name="files" id="file"  multiple="multiple" style ="display : none"> <br>
          <button type="button" class="btn btn-info" id="trigger">FileUpload...</button>
       </div>
       
-      파일 목록 표시라인
+       <!--  파일 목록 표시라인 --> 
       
       <div class="mb-3" id="fileZone">
       
-      </div>  -->
+      </div>  
       
       
       <button type="submit" class="btn btn-primary" id="regBtn">전송</button>
    </form>
 </div>
-<!-- <script type="text/javascript" src="/resources/js/boardRegister.js">
+ <script type="text/javascript" src="/re/js/boardRegister.js">
 
-</script> -->
+</script> 
 
-<%-- <jsp:include page="../layout/footer.jsp"></jsp:include> --%>
+ <jsp:include page="../layout/footer.jsp"></jsp:include> 
 
 
 
